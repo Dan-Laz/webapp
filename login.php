@@ -6,7 +6,7 @@
     $username=$_POST["username"];
     $password=$_POST["password"];
 
-    $users = json_decode(file_get_contents("users.txt"),true);
+    $users = json_decode(file_get_contents("users.json"),true);
 
     if (!is_array($users)) {
         $users = [];
