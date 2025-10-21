@@ -17,11 +17,31 @@
         <button type="submit" class="btn btn-success m-2">Aggiungi</button>
     </form>
 
+    <script>
+
+        function delete_item(item) {
+            console.log(item.id);
+            fetch('localhost:8080/delete.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: item.id });
+            });
+        }
+        function edit_item(item) {
+            console.log(item);
+        }
+
+    </script>
+
 </body>
 </html>
 
 <?php
     require_once("./persona.php");
+
+    $cont = 0;
 
     session_start();
     if (isset($_SESSION["username"])){
@@ -31,11 +51,12 @@
         }
 
         foreach ($persone as $persona) {
-            echo "<div class='card pt-2 m-2' style='width: 18rem;'>";
+            echo "<div id='{$cont}' class='card pt-2 m-2' style='width: 18rem;'>";
             echo "<h5>nome: {$persona["nome"]}</h5>";
             echo "<h5>cognome: {$persona["cognome"]}</h5>";
-            echo "<button class='btn btn-danger m-2'>delete</button><button class='btn m-2 btn-warning'>edit</button>";
+            echo "<button onclick='delete_item(this.parentElement)' class='btn btn-danger m-2'>delete</button><button onclick='edit_item(this.parentElement)' class='btn m-2 btn-warning'>edit</button>";
             echo "</div>";
+            $cont++;
 
         }
 
