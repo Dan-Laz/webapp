@@ -21,12 +21,12 @@
 
         function delete_item(item) {
             console.log(item.id);
-            fetch('localhost:8080/delete.php', {
+            fetch('/delete.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: item.id });
+                body: JSON.stringify({ id: item.id })
             });
         }
         function edit_item(item) {
