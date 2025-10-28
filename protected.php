@@ -33,7 +33,20 @@
             });
         }
         function edit_item(item) {
-            console.log(item.id);
+            let nome = prompt("nome");
+            let cognome = prompt("cognome");
+            console.log(item.id,nome,cognome);
+
+            fetch('/modifica_persona.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: item.id , nome: nome , cognome: cognome })
+            })
+            .then(response=>{
+                location.reload();
+            });
         }
 
     </script>
