@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Protected</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.css">
 
 </head>
@@ -27,10 +27,13 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ id: item.id })
+            })
+            .then(response=>{
+                location.reload();
             });
         }
         function edit_item(item) {
-            console.log(item);
+            console.log(item.id);
         }
 
     </script>
